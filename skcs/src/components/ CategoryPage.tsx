@@ -3,39 +3,38 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const categoryItems = {
   Sweets: [
-    { name: "Rava Kesari",prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/kesari-recipe-1-500x500.jpg" },
-    { name: "Gulab Jamun", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://theartisticcook.com/wp-content/uploads/2024/10/Gulab-Jamun-with-Milk-Powder.jpg" },
+    { name: "Rava Kesari", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/kesari-recipe-1-500x500.jpg" },
+    { name: "Gulab Jamun", prices: { S: 1.00 }, img: "https://theartisticcook.com/wp-content/uploads/2024/10/Gulab-Jamun-with-Milk-Powder.jpg" },
     { name: "Carrot Halwa", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i0.wp.com/kalimirchbysmita.com/wp-content/uploads/2016/01/Gajar-ka-Halwa-03.jpg" },
     { name: "Semiya Payasam", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.ticklingpalates.com/wp-content/uploads/2022/04/semiya-payasam-recipe.jpg" },
     { name: "Chakra Pongali", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.archanaskitchen.com/images/archanaskitchen/1-Author/anusha.pariti-gmail.com/Chakkra_Pongali_recipe_edited1.jpg" },
     { name: "Double Ka Meeta", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://x9s2d6a3.delivery.rocketcdn.me/wp-content/uploads/2018/04/double-ka-meetha-25_1200x1200.jpg" },
-    { name: "Bobbatlu",prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.madhuseverydayindian.com/wp-content/uploads/2021/08/bobbatlu.jpg" },
+    { name: "Bobbatlu", prices: { S: 2.00 }, img: "https://www.madhuseverydayindian.com/wp-content/uploads/2021/08/bobbatlu.jpg" },
   ],
   "Fry Items": [
     { name: "Donda Fry", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://img-global.cpcdn.com/recipes/59a5e5b6ad411ddb/680x482cq70/tindora-kaju-fry-dondakai-cashew-pakodi-koora-recipe-main-photo.jpg" },
     { name: "Potato Fry", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.cookwithnabeela.com/wp-content/uploads/2024/05/AlooFry.webp" },
     { name: "Soya Fry", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/2a4tlAUAGQI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD8rCaCp1vWprQ9__uxJrx68jGPPQ" },
     { name: "Egg Plant Fry", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/a8WHXJrKOHI/maxresdefault.jpg" },
-    { name: "Cabbage 65", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://lh4.googleusercontent.com/S--PeValmjExVDYkf02IN3W1sN_pgJa0KHHwDM4BZhUkWm-B-lB9m05zAWCgsSOgffhCi9tIwyD1W1_LYc0nydGUFO3jN9qbtSS4B74Zup6vdm6HSu0178R9GIejyfVwgN72Y1g2" },
+    { name: "Cabbage Fry", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://lh4.googleusercontent.com/S--PeValmjExVDYkf02IN3W1sN_pgJa0KHHwDM4BZhUkWm-B-lB9m05zAWCgsSOgffhCi9tIwyD1W1_LYc0nydGUFO3jN9qbtSS4B74Zup6vdm6HSu0178R9GIejyfVwgN72Y1g2" },
   ],
-  
   Pickles: [
     { name: "Tomato Pickle", prices: { "250g": 7.99, "500g": 12.99, "1000g": 19.99, "5000g": 89.99 }, img: "https://www.archanaskitchen.com/images/archanaskitchen/Indian_Pickles/Spicy_Tomato_Pickle_Recipe_South_Indian_Thakkali_Thokku.jpg" },
-    { name: "Palakura Pachadi",prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://vegetarianhomestylecooking2015.wordpress.com/wp-content/uploads/2016/05/img_0530-1.jpg" },
+    { name: "Palakura Pachadi", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://vegetarianhomestylecooking2015.wordpress.com/wp-content/uploads/2016/05/img_0530-1.jpg" },
     { name: "Gongura Pickle", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://aarogyamastu.in/wp-content/uploads/2022/06/gongura-pickle-e1671970585808.jpg" },
     { name: "Pudina Pachadi", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://www.orderpickles.in/cdn/shop/files/Pudina_grande.jpg?v=1707462756" },
     { name: "Mango Pickle", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/01/mango-pickle-recipe.jpg" },
-    { name: "Coriander Pickle",prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://frombharat.com/storage/media/w9q2kaSCWCSxzOjOKJdFqITUxosLlc3pW8w9reAN.jpg" },
+    { name: "Coriander Pickle", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://frombharat.com/storage/media/w9q2kaSCWCSxzOjOKJdFqITUxosLlc3pW8w9reAN.jpg" },
     { name: "Mango Roti Pachadi", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://i.ytimg.com/vi/JGaxbauxrj4/maxresdefault.jpg" },
   ],
   "Rice Items": [
     { name: "Lemon Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/02/lemon-rice-recipe.jpg" },
-    { name: "Temple Style Pulihora",prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/GLdLE_u13EY/maxresdefault.jpg" },
+    { name: "Temple Style Pulihora", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/GLdLE_u13EY/maxresdefault.jpg" },
     { name: "Coriander Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://cookingfromheart.com/wp-content/uploads/2021/06/Coriander-Rice-5.jpg" },
     { name: "Tomato Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://aromaticessence.co/wp-content/uploads/2022/11/tomato_rice_featured_image.jpg" },
     { name: "Jeera Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.whiskaffair.com/wp-content/uploads/2021/06/Jeera-Rice-2-3-1.jpg" },
     { name: "Fried Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.onceuponachef.com/images/2023/12/Fried-Rice-Hero-12.jpg" },
-    { name: "White Rice",prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://images.getrecipekit.com/20230113172320-whiterice.jpg?aspect_ratio=1:1&quality=90&" },
+    { name: "White Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://images.getrecipekit.com/20230113172320-whiterice.jpg?aspect_ratio=1:1&quality=90&" },
     { name: "Veg Dum Biryani", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://kannanskitchen.com/wp-content/uploads/2021/04/DSC_1079_1.jpg" },
     { name: "Egg Dum Biryani", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvmlifRamUfBasSU7slQzpnKFCfyNhPuLGQ&s" },
     { name: "Traditional Curd Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC3nDgYnZMgGklpIWA8AFCE4N01yDKjT0Ueg&s" },
@@ -43,12 +42,12 @@ const categoryItems = {
     { name: "Putnalu Powder Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_uXDE5wMZcpbsp8jGUgnGlj4qy-ONowGBcXjpV-wUjMY6fbhgRHMtJzIzE27sQ5EVc0On-Ao5Pzgynzs6Nw3ba2cvhU3DXkMdAhpSZZVk-mYUiDU5VLwqynMyQTrPAkjuQYW7M=w1200-h630-p-k-no-nu" },
   ],
   Curries: [
-    { name: "Palak Paneer",prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://healthynibblesandbits.com/wp-content/uploads/2020/01/Saag-Paneer-FF.jpg" },
-    { name: "Paneer Butter Masala",prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://myfoodstory.com/wp-content/uploads/2021/07/restaurant-style-paneer-butter-masala-2-500x500.jpg" },
-    { name: "Mushroom Masala",prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://shwetainthekitchen.com/wp-content/uploads/2023/03/mutter-mushroom.jpg" },
+    { name: "Palak Paneer", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://healthynibblesandbits.com/wp-content/uploads/2020/01/Saag-Paneer-FF.jpg" },
+    { name: "Paneer Butter Masala", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://myfoodstory.com/wp-content/uploads/2021/07/restaurant-style-paneer-butter-masala-2-500x500.jpg" },
+    { name: "Mushroom Masala", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://shwetainthekitchen.com/wp-content/uploads/2023/03/mutter-mushroom.jpg" },
     { name: "Potato Curry", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/04/potato-curry-aloo-curry.jpg" },
     { name: "Chole Masala", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.indianveggiedelight.com/wp-content/uploads/2019/05/chana-masala-recipe-featured.jpg" },
-    { name: "Guthu Vankai", prices: { S: 7.99, M: 10.99, L: 13.99 },img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2014/10/gutti-vankaya-kura-recipe-15.webp" },
+    { name: "Guthu Vankai", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2014/10/gutti-vankaya-kura-recipe-15.webp" },
     { name: "Dal", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://shwetainthekitchen.com/wp-content/uploads/2023/01/chana-dal.jpg" },
     { name: "Donda Curry", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/xcA0VKu2pQo/maxresdefault.jpg" },
     { name: "Mix Veg Curry", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2023/07/vegetable-curry-recipe.jpg" },
@@ -77,22 +76,22 @@ const categoryItems = {
   ],
   Starters: [
     { name: "Veg Manchuria", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://chefadora.b-cdn.net/Screenshot_2024_10_01_140619_572a1d5d13.jpg" },
-    { name: "Baby Corn",prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://cdn2.foodviva.com/static-content/food-images/chinese-recipes/baby-corn-manchurian/baby-corn-manchurian.jpg" },
+    { name: "Baby Corn", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://cdn2.foodviva.com/static-content/food-images/chinese-recipes/baby-corn-manchurian/baby-corn-manchurian.jpg" },
     { name: "Gobi", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/AXEzrUVD_XI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDjQi3nUJLrYEvsF5aHsHy7FSl68Q" },
     { name: "Potato Bites", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/W1ePQ6MWark/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAzrE1A8ut_d9Bdj-sR0zYIWjbaQw" },
     { name: "Crispy Corn", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://rakskitchen.net/wp-content/uploads/2022/01/crisp-corn-500x375.jpg" },
     { name: "Paneer Bites", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i0.wp.com/mayuris-jikoni.com/wp-content/uploads/2018/04/b6e23-img_6654.jpg?ssl=1" },
   ],
   Snacks: [
-    { name: "Palak Pakodi",  prices: { S: 4.99 }, img: "https://yummyindiankitchen.com/wp-content/uploads/2016/07/palak-pakoda-recipe.jpg" },
-    { name: "Onion Pakodi",  prices: { S: 4.99 }, img: "https://rakskitchen.net/wp-content/uploads/2010/06/Onion-pakoda.jpg" },
+    { name: "Palak Pakodi", prices: { S: 4.99 }, img: "https://yummyindiankitchen.com/wp-content/uploads/2016/07/palak-pakoda-recipe.jpg" },
+    { name: "Onion Pakodi", prices: { S: 4.99 }, img: "https://rakskitchen.net/wp-content/uploads/2010/06/Onion-pakoda.jpg" },
     { name: "Gobi", prices: { S: 4.99 }, img: "https://evergreenrecipes.com/wp-content/uploads/2015/11/P1010701.jpg" },
   ],
   Hots: [
     { name: "Mirchi Bajji ", prices: { S: 4.99 }, img: "https://binjalsvegkitchen.com/wp-content/uploads/2024/09/Mirchi-Bajji-H1.jpg" },
-    { name: "Alu Bajji",  prices: { S: 4.99 }, img: "https://i.ytimg.com/vi/7KhTfQ2Kr8w/maxresdefault.jpg" },
-    { name: "Onion Bajji",  prices: { S: 4.99 }, img: "https://www.kamalascorner.com/wp-content/uploads/2015/03/pakoda.jpg" },
-    { name: "Panner Bajji",  prices: { S: 4.99 }, img: "https://pipingpotcurry.com/wp-content/uploads/2022/10/Paneer-Pakora-Recipe-Piping-Pot-Curry.jpg" },
+    { name: "Alu Bajji", prices: { S: 4.99 }, img: "https://i.ytimg.com/vi/7KhTfQ2Kr8w/maxresdefault.jpg" },
+    { name: "Onion Bajji", prices: { S: 4.99 }, img: "https://www.kamalascorner.com/wp-content/uploads/2015/03/pakoda.jpg" },
+    { name: "Panner Bajji", prices: { S: 4.99 }, img: "https://pipingpotcurry.com/wp-content/uploads/2022/10/Paneer-Pakora-Recipe-Piping-Pot-Curry.jpg" },
     { name: "Bread Pakaoda", prices: { S: 4.99 }, img: "https://static.toiimg.com/thumb/84629641.cms?imgsize=326457&width=800&height=800" },
   ],
 };
@@ -112,7 +111,7 @@ const CategoryPage: React.FC = () => {
   }, []);
 
   const addToCart = (item: { name: string; prices: { [key: string]: number }; img: string }, quantity: number, size: string, option: string) => {
-    const price = item.prices[size] * quantity; // Calculate total price based on size and quantity
+    const price = item.name === "Gulab Jamun" ? quantity * 1 : item.name === "Bobbatlu" ? quantity * 2 : item.prices[size] * quantity; // Calculate total price based on size and quantity
     const updatedItem = {
       name: item.name,
       price,
@@ -139,18 +138,26 @@ const CategoryPage: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {items.map((item, index) => {
             const [selectedSize, setSelectedSize] = useState(
-              categoryName === "Pickles"  ? "250g" : "S"
+              categoryName === "Pickles" ? "250g" : "S"
             );
             const [customQuantity, setCustomQuantity] = useState(1);
             const [selectedOption, setSelectedOption] = useState("N/A");
+
+            // Custom pricing logic for Gulab Jamun and Bobbatlu
+            const isGulabJamun = item.name === "Gulab Jamun";
+            const isBobbatlu = item.name === "Bobbatlu";
 
             return (
               <div key={index} className="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
                 <img src={item.img} alt={item.name} className="w-full h-40 object-cover rounded-md mb-4" />
                 <h3 className="text-xl font-semibold text-orange-900">{item.name}</h3>
-                <p className="text-lg text-gray-700">Price: ${item.prices[selectedSize].toFixed(2)} AUD</p>
+                
+                {/* Price Calculation */}
+                <p className="text-lg text-gray-700">
+                  Price: ${isGulabJamun ? (customQuantity * 1).toFixed(2) : isBobbatlu ? (customQuantity * 2).toFixed(2) : item.prices[selectedSize].toFixed(2)} AUD
+                </p>
 
-                {/* Size Selection */}
+                {/* Size Selection for other items */}
                 {categoryName === "Pickles" || categoryName === "Sweets" ? (
                   <div className="mt-4">
                     {Object.keys(item.prices).map((size) => (
@@ -167,7 +174,7 @@ const CategoryPage: React.FC = () => {
                       </label>
                     ))}
                   </div>
-                ) : categoryName === "Rotis" || categoryName === "Drinks"|| categoryName === "Snacks" || categoryName === "Hots"? (
+                ) : categoryName === "Rotis" || categoryName === "Drinks" || categoryName === "Snacks" || categoryName === "Hots" ? (
                   <div className="mt-4">
                     <label className="inline-flex items-center mr-4">
                       <input
@@ -193,13 +200,27 @@ const CategoryPage: React.FC = () => {
                           onChange={() => setSelectedSize(size)}
                           className="form-radio h-4 w-4 text-orange-600"
                         />
-                        <span className="ml-2">{size} </span>
+                        <span className="ml-2">{size}</span>
                       </label>
                     ))}
                   </div>
                 )}
 
-                {/* Wet/Dry Option for Starters */}
+                {/* Custom Quantity Input for Gulab Jamun and Bobbatlu */}
+                {(isGulabJamun || isBobbatlu) && (
+                  <div className="mt-4">
+                    <label className="block text-gray-700">Quantity:</label>
+                    <input
+                      type="number"
+                      min="1"
+                      value={customQuantity}
+                      onChange={(e) => setCustomQuantity(Number(e.target.value))}
+                      className="border border-gray-300 rounded-md p-2 w-20 text-center"
+                    />
+                  </div>
+                )}
+
+                {/* Wet /Dry Option for Starters */}
                 {categoryName === "Starters" && (
                   <div className="mt-4 flex justify-center">
                     <button
