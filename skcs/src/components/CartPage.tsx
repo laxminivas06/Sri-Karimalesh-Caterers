@@ -1,0 +1,80 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+const Cart: React.FC = () => {
+  const [cart, setCart] = useState<{ name: string; price: number; img: string; quantity: number; pack: string; option: string }[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const savedCart = localStorage.getItem("shoppingCart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  const removeFromCart = (index: number) => {
+    const updatedCart = cart.filter((_, i) => i !== index);
+    setCart(updatedCart);
+    localStorage.setItem("shoppingCart", JSON.stringify(updatedCart));
+  };
+
+  const handleCheckout = () => {
+    const phoneNumber = "+61450056387";
+    const orderDetails = cart.map(item => 
+      `Name: ${item.name}, Price: $${item.price.toFixed(2)} AUD, Quantity: ${item.quantity}, Pack: ${item.pack}, Option: ${item.option}`
+    ).join('\n');
+    
+    const message = `I would like to proceed with my order. Here are the details:\n${orderDetails}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  return (
+    <div className="container mx-auto px-4 py-12">
+      <h2 className="text-3xl font-bold text-center text-orange-900 mb-16">Shopping Cart</h2>
+      {cart.length > 0 ? (
+        <div className="grid grid-cols-1 gap-6">
+          {cart.map((item, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-lg p-6 flex items-center justify-between">
+              <img src={item.img} alt={item.name} className="w-20 h-20 object-cover rounded-md" />
+              <div className="flex-1 ml-4">
+                <h3 className="text-xl font-semibold text-orange-900">{item.name}</h3>
+                <p className="text-lg text-gray-700">Price: ${item.price.toFixed(2)} AUD</p>
+                <p className="text-lg text-gray-700">Quantity: {item.quantity}</p>
+                <p className="text-lg text-gray-700">Pack: {item.pack}</p>
+                {item.option !== "N/A" && <p className="text-lg text-gray-700">Option: {item.option}</p>}
+              </div>
+              <button
+                onClick={() => removeFromCart(index)}
+                className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-center text-gray-600">Your cart is empty.</p>
+      )}
+
+      <div className="mt-8 flex justify-between">
+        <button
+          onClick={() => navigate(-1)}
+          className="bg-gray-600 text-white px-6 py-3 rounded-md hover:bg-gray-700 transition"
+        >
+          ← Back
+        </button>
+        {cart.length > 0 && (
+          <button
+            onClick={handleCheckout}
+            className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
+          >
+            Proceed to Checkout
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Cart;
