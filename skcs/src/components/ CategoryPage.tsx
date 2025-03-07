@@ -4,12 +4,12 @@ import { useParams, useNavigate } from "react-router-dom";
 const categoryItems = {
   Sweets: [
     { name: "Rava Kesari", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/kesari-recipe-1-500x500.jpg" },
-    { name: "Gulab Jamun", prices: { 1: 7.99, 2: 14.99, 3: 21.99 }, img: "https://theartisticcook.com/wp-content/uploads/2024/10/Gulab-Jamun-with-Milk-Powder.jpg" },
+    { name: "Gulab Jamun", prices: { 1: 7.99 }, img: "https://theartisticcook.com/wp-content/uploads/2024/10/Gulab-Jamun-with-Milk-Powder.jpg" },
     { name: "Carrot Halwa", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i0.wp.com/kalimirchbysmita.com/wp-content/uploads/2016/01/Gajar-ka-Halwa-03.jpg" },
     { name: "Semiya Payasam", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.ticklingpalates.com/wp-content/uploads/2022/04/semiya-payasam-recipe.jpg" },
     { name: "Chakra Pongali", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.archanaskitchen.com/images/archanaskitchen/1-Author/anusha.pariti-gmail.com/Chakkra_Pongali_recipe_edited1.jpg" },
     { name: "Double Ka Meeta", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://x9s2d6a3.delivery.rocketcdn.me/wp-content/uploads/2018/04/double-ka-meetha-25_1200x1200.jpg" },
-    { name: "Bobbatlu", prices: { 1: 7.99, 2: 14.99, 3: 21.99 }, img: "https://www.madhuseverydayindian.com/wp-content/uploads/2021/08/bobbatlu.jpg" },
+    { name: "Bobbatlu", prices: { 1: 7.99 }, img: "https://www.madhuseverydayindian.com/wp-content/uploads/2021/08/bobbatlu.jpg" },
   ],
   "Fry Items": [
     { name: "Donda Fry", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://img-global.cpcdn.com/recipes/59a5e5b6ad411ddb/680x482cq70/tindora-kaju-fry-dondakai-cashew-pakodi-koora-recipe-main-photo.jpg" },
@@ -36,7 +36,6 @@ const categoryItems = {
     { name: "Fried Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.onceuponachef.com/images/2023/12/Fried-Rice-Hero-12.jpg" },
     { name: "White Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://images.getrecipekit.com/20230113172320-whiterice.jpg?aspect_ratio=1:1&quality=90&" },
     { name: "Veg Dum Biryani", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://kannanskitchen.com/wp-content/uploads/2021/04/DSC_1079_1.jpg" },
-    { name: "Egg Dum Biryani", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvmlifRamUfBasSU7slQzpnKFCfyNhPuLGQ&s" },
     { name: "Traditional Curd Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC3nDgYnZMgGklpIWA8AFCE4N01yDKjT0Ueg&s" },
     { name: "Palli Powder Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifdWKpdqD9enBn3hnaW0zXWXge_L9wOjpiejDSkJLOT0f6Fnc9SA5dEFaubXu1KfJ-yk-dw2NEwaPdNyMTI9jsneqhzM6HyKAJ0xusMCm4fp_4sZYvia3D_alyc1knvWLQ89Upc-HFkDc/s1600/IMG_0863.jpg" },
     { name: "Putnalu Powder Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_uXDE5wMZcpbsp8jGUgnGlj4qy-ONowGBcXjpV-wUjMY6fbhgRHMtJzIzE27sQ5EVc0On-Ao5Pzgynzs6Nw3ba2cvhU3DXkMdAhpSZZVk-mYUiDU5VLwqynMyQTrPAkjuQYW7M=w1200-h630-p-k-no-nu" },
@@ -64,7 +63,6 @@ const categoryItems = {
   Liquids: [
     { name: "Sambar", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/sambar.webp" },
     { name: "Tomato Rasam", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.vegrecipesofindia.com/wp-content/uploads/2018/10/tomato-rasam-recipe-1.jpg" },
-    { name: "Special Rasam", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/01/rasam.webp" },
     { name: "Pachi Pulusu", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.myhealthybreakfast.in/images/drink01/pachi-pulusu.jpg" },
     { name: "Majjiga Pulusu", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.cookshideout.com/wp-content/uploads/2007/04/Majjiga-Pulusu-with-Greens_FI.jpg" },
   ],
@@ -75,17 +73,16 @@ const categoryItems = {
     { name: "Fruit Salad", prices: { S: 4.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/fruit-custard.jpg" },
   ],
   Starters: [
-    { name: "Veg Manchuria", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://chefadora.b-cdn.net/Screenshot_2024_10_01_140619_572a1d5d13.jpg" },
-    { name: "Baby Corn", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://cdn2.foodviva.com/static-content/food-images/chinese-recipes/baby-corn-manchurian/baby-corn-manchurian.jpg" },
+    { name: "Veg Manchuria", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://chefadora.b-cdn.net/Screenshot_2024_10_01_140619_572a1d5d13.jpg" },
+    { name: "Baby Corn", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://cdn2.foodviva.com/static-content/food-images/chinese-recipes/baby-corn-manchurian/baby-corn-manchurian.jpg" },
     { name: "Gobi", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/AXEzrUVD_XI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDjQi3nUJLrYEvsF5aHsHy7FSl68Q" },
-    { name: "Potato Bites", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/W1ePQ6MWark/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAzrE1A8ut_d9Bdj-sR0zYIWjbaQw" },
-    { name: "Crispy Corn", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://rakskitchen.net/wp-content/uploads/2022/01/crisp-corn-500x375.jpg" },
+    { name: "Potato Bites", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/W1ePQ6MWark/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAzrE1A8ut_d9Bdj-sR0zYIWjbaQw" },
+    { name: "Crispy Corn", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://rakskitchen.net/wp-content/uploads/2022/01/crisp-corn-500x375.jpg" },
     { name: "Paneer Bites", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://i0.wp.com/mayuris-jikoni.com/wp-content/uploads/2018/04/b6e23-img_6654.jpg?ssl=1" },
   ],
   Snacks: [
     { name: "Palak Pakodi", prices: { S: 4.99 }, img: "https://yummyindiankitchen.com/wp-content/uploads/2016/07/palak-pakoda-recipe.jpg" },
     { name: "Onion Pakodi", prices: { S: 4.99 }, img: "https://rakskitchen.net/wp-content/uploads/2010/06/Onion-pakoda.jpg" },
-    { name: "Gobi", prices: { S: 4.99 }, img: "https://evergreenrecipes.com/wp-content/uploads/2015/11/P1010701.jpg" },
   ],
   Hots: [
     { name: "Mirchi Bajji ", prices: { S: 4.99 }, img: "https://binjalsvegkitchen.com/wp-content/uploads/2024/09/Mirchi-Bajji-H1.jpg" },
@@ -169,6 +166,12 @@ const CategoryPage: React.FC = () => {
                         <span className="ml-2">{size}</span>
                       </label>
                     ))}
+                    {/* Additional message for Paneer Bites and Potato Bites */}
+                    {(item.name === "Paneer Bites" || item.name === "Potato Bites") && (
+                      <p className="text-sm text-gray-500 mt-2">
+                        {selectedSize === "M" ? "M: 5 pieces" : "L: 10 pieces"}
+                      </p>
+                    )}
                   </div>
                 ) : (
                   <div className="mt-4">
@@ -207,7 +210,7 @@ const CategoryPage: React.FC = () => {
                   <div className="mt-4 flex justify-center">
                     <button
                       onClick={() => setSelectedOption("Wet")}
-                      className={`mr-2 px-4 py-2 rounded-md transition-all duration-300 ${selectedOption === "Wet" ? 'bg-orange-600 text-white ' : 'bg-gray-200 text-gray-800 hover:bg-orange-500 hover:text-white'}`}
+                      className={`mr-2 px-4 py-2 rounded-md transition-all duration-300 ${selectedOption === "Wet" ? 'bg-orange-600 text-white' : 'bg-gray-200 text-gray-800 hover:bg-orange-500 hover:text-white'}`}
                     >
                       Wet
                     </button>
