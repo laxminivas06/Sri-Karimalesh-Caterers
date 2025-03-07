@@ -193,7 +193,7 @@ const CategoryPage: React.FC = () => {
                           onChange={() => setSelectedSize(size)}
                           className="form-radio h-4 w-4 text-orange-600"
                         />
-                        <span className="ml-2">{size} (${item.prices[size].toFixed(2)})</span>
+                        <span className="ml-2">{size} </span>
                       </label>
                     ))}
                   </div>
