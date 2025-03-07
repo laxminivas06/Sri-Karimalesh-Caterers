@@ -38,7 +38,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
-              src="https://res.cloudinary.com/dt3effj06/image/upload/v1740226250/z9uvdmnabd59omvybrnu.svg"
+              src="https://res.cloudinary.com/dt3effj06/image/upload/v1740503772/SK.svg"
               alt="Sri Karimalesh Caterings Logo"
               className="h-12 w-auto"
             />

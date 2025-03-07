@@ -53,11 +53,11 @@ const Footer = () => {
   <p>This Website was Developed by</p>
   <div className="flex flex-row space-x-4 mt-2">
     <img
-      src="https://res.cloudinary.com/dt3effj06/image/upload/v1740291705/dzdb5rvkuia6b6njtc2h.svg"
+      src="https://res.cloudinary.com/dt3effj06/image/upload/v1740503970/NE.svg"
       className="h-20"
     />
     <img
-      src="https://res.cloudinary.com/dt3effj06/image/upload/v1740393371/lekgttbp04mwatgpafki.svg"
+      src="https://res.cloudinary.com/dt3effj06/image/upload/v1740503747/SNL.svg"
       className="h-20"
     />
   </div>

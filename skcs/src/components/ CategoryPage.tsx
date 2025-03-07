@@ -3,13 +3,13 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const categoryItems = {
   Sweets: [
-    { name: "Rava Kesari", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/kesari-recipe-1-500x500.jpg" },
-    { name: "Gulab Jamun", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://theartisticcook.com/wp-content/uploads/2024/10/Gulab-Jamun-with-Milk-Powder.jpg" },
-    { name: "Carrot Halwa", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://i0.wp.com/kalimirchbysmita.com/wp-content/uploads/2016/01/Gajar-ka-Halwa-03.jpg" },
-    { name: "Semiya Payasam", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://www.ticklingpalates.com/wp-content/uploads/2022/04/semiya-payasam-recipe.jpg" },
-    { name: "Chakra Pongali", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://www.archanaskitchen.com/images/archanaskitchen/1-Author/anusha.pariti-gmail.com/Chakkra_Pongali_recipe_edited1.jpg" },
-    { name: "Double Ka Meeta", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://x9s2d6a3.delivery.rocketcdn.me/wp-content/uploads/2018/04/double-ka-meetha-25_1200x1200.jpg" },
-    { name: "Bobbatlu", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://www.madhuseverydayindian.com/wp-content/uploads/2021/08/bobbatlu.jpg" },
+    { name: "Rava Kesari",prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/kesari-recipe-1-500x500.jpg" },
+    { name: "Gulab Jamun", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://theartisticcook.com/wp-content/uploads/2024/10/Gulab-Jamun-with-Milk-Powder.jpg" },
+    { name: "Carrot Halwa", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i0.wp.com/kalimirchbysmita.com/wp-content/uploads/2016/01/Gajar-ka-Halwa-03.jpg" },
+    { name: "Semiya Payasam", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.ticklingpalates.com/wp-content/uploads/2022/04/semiya-payasam-recipe.jpg" },
+    { name: "Chakra Pongali", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.archanaskitchen.com/images/archanaskitchen/1-Author/anusha.pariti-gmail.com/Chakkra_Pongali_recipe_edited1.jpg" },
+    { name: "Double Ka Meeta", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://x9s2d6a3.delivery.rocketcdn.me/wp-content/uploads/2018/04/double-ka-meetha-25_1200x1200.jpg" },
+    { name: "Bobbatlu",prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.madhuseverydayindian.com/wp-content/uploads/2021/08/bobbatlu.jpg" },
   ],
   "Fry Items": [
     { name: "Donda Fry", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://img-global.cpcdn.com/recipes/59a5e5b6ad411ddb/680x482cq70/tindora-kaju-fry-dondakai-cashew-pakodi-koora-recipe-main-photo.jpg" },
@@ -139,7 +139,7 @@ const CategoryPage: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {items.map((item, index) => {
             const [selectedSize, setSelectedSize] = useState(
-              categoryName === "Pickles" || categoryName === "Sweets" ? "250g" : "S"
+              categoryName === "Pickles"  ? "250g" : "S"
             );
             const [customQuantity, setCustomQuantity] = useState(1);
             const [selectedOption, setSelectedOption] = useState("N/A");
