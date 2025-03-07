@@ -220,7 +220,7 @@ const CategoryPage: React.FC = () => {
                   </div>
                 )}
 
-                {/* Wet /Dry Option for Starters */}
+                {/* Wet/Dry Option for Starters */}
                 {categoryName === "Starters" && (
                   <div className="mt-4 flex justify-center">
                     <button
