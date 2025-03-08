@@ -84,7 +84,7 @@ const categoryItems = {
     { name: "Onion Pakodi", prices: { S: 4.99 }, img: "https://rakskitchen.net/wp-content/uploads/2010/06/Onion-pakoda.jpg" },
   ],
   Hots: [
-    { name: "Mirchi Bajji ", prices: { S: 4.99 }, img: "https://binjalsvegkitchen.com/wp-content/uploads/2024/09/Mirchi-Bajji-H1.jpg" },
+    { name: "Mirchi Bajji", prices: { S: 4.99 }, img: "https://binjalsvegkitchen.com/wp-content/uploads/2024/09/Mirchi-Bajji-H1.jpg" },
     { name: "Alu Bajji", prices: { S: 4.99 }, img: "https://i.ytimg.com/vi/7KhTfQ2Kr8w/maxresdefault.jpg" },
     { name: "Onion Bajji", prices: { S: 4.99 }, img: "https://www.kamalascorner.com/wp-content/uploads/2015/03/pakoda.jpg" },
     { name: "Vankaya Bajji", prices: { S: 4.99 }, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm8hDLa_CcIrXDYR3E0Dom1nNErj9XnfjFog&s" },
