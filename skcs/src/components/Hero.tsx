@@ -59,9 +59,9 @@ const Hero = () => {
       <div className="relative z-10 text-center text-white px-6">
         {/* Logo */}
         <img
-          src="https://res.cloudinary.com/dt3effj06/image/upload/v1741347256/hv_ltcjjm.svg"
+          src="https://res.cloudinary.com/dt3effj06/image/upload/v1741402625/sish_bxlsw0.svg"
           alt="Sri Karimalesh Caterings Logo"
-          className="w-200 h-auto mx-auto mb-6" // Adjust size as needed
+          className="w-auto h-400 mx-auto mb-6" // Adjust size as needed
         />
 
        

@@ -13,7 +13,7 @@ const About = () => {
         className="flex justify-center mb-12"
       >
         <img
-          src="https://res.cloudinary.com/dt3effj06/image/upload/v1740291043/ja5nmb3loua6hulbcbgu.svg"
+          src="https://res.cloudinary.com/dt3effj06/image/upload/v1741402625/sish_bxlsw0.svg"
           alt="Sri Karimalesh Caterings Logo"
           className="w-64 h-64 md:w-80 md:h-80 animate-pulse drop-shadow-lg"
         />
@@ -41,7 +41,7 @@ const About = () => {
           className="flex justify-center"
         >
           <img
-            src="https://res.cloudinary.com/dt3effj06/image/upload/v1740451135/iuunwxehuixgo4is2kvv.jpg"
+            src="https://static.vecteezy.com/system/resources/thumbnails/035/802/364/small/ai-generated-a-caucasian-boy-dressed-as-a-chef-and-preparing-food-in-kitchen-photo.JPG"
             alt="Chef at Sri Karimalesh Caterings"
             className="rounded-lg shadow-2xl w-full max-w-md border-4 border-orange-300 transform hover:scale-105 transition-transform duration-300"
           />
