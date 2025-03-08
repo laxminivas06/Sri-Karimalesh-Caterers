@@ -21,15 +21,14 @@ const categoryItems = {
   Pickles: [
     { name: "Tomato Pickle", prices: { "250g": 7.99, "500g": 12.99, "1000g": 19.99, "5000g": 89.99 }, img: "https://www.archanaskitchen.com/images/archanaskitchen/Indian_Pickles/Spicy_Tomato_Pickle_Recipe_South_Indian_Thakkali_Thokku.jpg" },
     { name: "Palakura Pachadi", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://vegetarianhomestylecooking2015.wordpress.com/wp-content/uploads/2016/05/img_0530-1.jpg" },
-    { name: "Gongura Pickle", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://aarogyamastu.in/wp-content/uploads/2022/06/gongura-pickle-e1671970585808.jpg" },
     { name: "Pudina Pachadi", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://www.orderpickles.in/cdn/shop/files/Pudina_grande.jpg?v=1707462756" },
     { name: "Mango Pickle", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/01/mango-pickle-recipe.jpg" },
-    { name: "Coriander Pickle", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://frombharat.com/storage/media/w9q2kaSCWCSxzOjOKJdFqITUxosLlc3pW8w9reAN.jpg" },
+    { name: "Coriander Pickle", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://kandrafoods.com/wp-content/uploads/2023/01/coriander-pickle.jpg" },
     { name: "Mango Roti Pachadi", prices: { "250g": 4.99, "500g": 6.99, "1000g": 8.99, "5000g": 19.99 }, img: "https://i.ytimg.com/vi/JGaxbauxrj4/maxresdefault.jpg" },
   ],
   "Rice Items": [
     { name: "Lemon Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/02/lemon-rice-recipe.jpg" },
-    { name: "Temple Style Pulihora", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/GLdLE_u13EY/maxresdefault.jpg" },
+    { name: "Temple Style Pulihora(Tamarind)", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/GLdLE_u13EY/maxresdefault.jpg" },
     { name: "Coriander Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://cookingfromheart.com/wp-content/uploads/2021/06/Coriander-Rice-5.jpg" },
     { name: "Tomato Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://aromaticessence.co/wp-content/uploads/2022/11/tomato_rice_featured_image.jpg" },
     { name: "Jeera Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.whiskaffair.com/wp-content/uploads/2021/06/Jeera-Rice-2-3-1.jpg" },
@@ -38,7 +37,7 @@ const categoryItems = {
     { name: "Veg Dum Biryani", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://kannanskitchen.com/wp-content/uploads/2021/04/DSC_1079_1.jpg" },
     { name: "Traditional Curd Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC3nDgYnZMgGklpIWA8AFCE4N01yDKjT0Ueg&s" },
     { name: "Palli Powder Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifdWKpdqD9enBn3hnaW0zXWXge_L9wOjpiejDSkJLOT0f6Fnc9SA5dEFaubXu1KfJ-yk-dw2NEwaPdNyMTI9jsneqhzM6HyKAJ0xusMCm4fp_4sZYvia3D_alyc1knvWLQ89Upc-HFkDc/s1600/IMG_0863.jpg" },
-    { name: "Putnalu Powder Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_uXDE5wMZcpbsp8jGUgnGlj4qy-ONowGBcXjpV-wUjMY6fbhgRHMtJzIzE27sQ5EVc0On-Ao5Pzgynzs6Nw3ba2cvhU3DXkMdAhpSZZVk-mYUiDU5VLwqynMyQTrPAkjuQYW7M=w1200-h630-p-k-no-nu" },
+    { name: "Putnalu Powder Rice", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2019/11/puffed-rice-upma-recipe-uggani.jpg" },
   ],
   Curries: [
     { name: "Palak Paneer", prices: { S: 7.99, M: 10.99, L: 13.99 }, img: "https://healthynibblesandbits.com/wp-content/uploads/2020/01/Saag-Paneer-FF.jpg" },
@@ -89,6 +88,7 @@ const categoryItems = {
     { name: "Alu Bajji", prices: { S: 4.99 }, img: "https://i.ytimg.com/vi/7KhTfQ2Kr8w/maxresdefault.jpg" },
     { name: "Onion Bajji", prices: { S: 4.99 }, img: "https://www.kamalascorner.com/wp-content/uploads/2015/03/pakoda.jpg" },
     { name: "Vankaya Bajji", prices: { S: 4.99 }, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm8hDLa_CcIrXDYR3E0Dom1nNErj9XnfjFog&s" },
+    { name: "Sabudana vada", prices: { S: 4.99 }, img: "https://vegecravings.com/wp-content/uploads/2017/07/sabudana-vada-recipe-step-by-step-instructions.jpg" },
     { name: "Bread Pakaoda", prices: { S: 4.99 }, img: "https://static.toiimg.com/thumb/84629641.cms?imgsize=326457&width=800&height=800" },
   ],
 };
@@ -173,22 +173,29 @@ const CategoryPage: React.FC = () => {
                       </p>
                     )}
                   </div>
-                ) : (
+                ) : categoryName === "Rotis" || categoryName === "Snacks" || categoryName === "Drinks"|| categoryName === "Hots" ? (
                   <div className="mt-4">
-                    {Object.keys(item.prices).map((size) => (
-                      <label key={size} className="inline-flex items-center mr-4">
-                        <input
-                          type="radio"
-                          name={`size-${index}`}
-                          value={size}
-                          checked={selectedSize === size}
-                          onChange={() => setSelectedSize(size)}
-                          className="form-radio h-4 w-4 text-orange-600"
-                        />
-                        <span className="ml-2">{size}</span>
-                      </label>
-                    ))}
+                    <p className="text-lg text-gray-700"></p>
                   </div>
+                ) : (
+                  // Render size selection only if the item is not Gulab Jamun or Bobbatlu
+                  !(item.name === "Gulab Jamun" || item.name === "Bobbatlu") && (
+                    <div className="mt-4">
+                      {Object.keys(item.prices).map((size) => (
+                        <label key={size} className="inline-flex items-center mr-4">
+                          <input
+                            type="radio"
+                            name={`size-${index}`}
+                            value={size}
+                            checked={selectedSize === size}
+                            onChange={() => setSelectedSize(size)}
+                            className="form-radio h-4 w-4 text-orange-600"
+                          />
+                          <span className="ml-2">{size}</span>
+                        </label>
+                      ))}
+                    </div>
+                  )
                 )}
 
                 {/* Custom Quantity Input for Gulab Jamun and Bobbatlu */}
@@ -202,6 +209,17 @@ const CategoryPage: React.FC = () => {
                       onChange={(e) => setCustomQuantity(Number(e.target.value))}
                       className="border border-gray-300 rounded-md p-2 w-20 text-center"
                     />
+                  </div>
+                )}
+
+                {/* Special Messages for Hots category items */}
+                {categoryName === "Hots" && (
+                  <div className="mt-2 text-sm text-gray-500">
+                    {item.name === "Mirchi Bajji" || item.name === "Alu Bajji" || item.name === "Onion Bajji" || item.name === "Vankaya Bajji"|| item.name === "Sabudana vada" ? (
+                      <p>Single plate consists of 4 pieces.</p>
+                    ) : item.name === "Bread Pakaoda" ? (
+                      <p>Single plate has 1 piece.</p>
+                    ) : null}
                   </div>
                 )}
 
