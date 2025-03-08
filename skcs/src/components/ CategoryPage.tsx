@@ -72,9 +72,9 @@ const categoryItems = {
     { name: "Fruit Salad", prices: { S: 4.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/fruit-custard.jpg" },
   ],
   Starters: [
-    { name: "Veg Manchuria", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://chefadora.b-cdn.net/Screenshot_2024_10_01_140619_572a1d5d13.jpg" },
-    { name: "Baby Corn", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://cdn2.foodviva.com/static-content/food-images/chinese-recipes/baby-corn-manchurian/baby-corn-manchurian.jpg" },
-    { name: "Gobi", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/AXEzrUVD_XI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDjQi3nUJLrYEvsF5aHsHy7FSl68Q" },
+    { name: "Veg Manchurian", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://chefadora.b-cdn.net/Screenshot_2024_10_01_140619_572a1d5d13.jpg" },
+    { name: "Baby Corn Manchurian", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://cdn2.foodviva.com/static-content/food-images/chinese-recipes/baby-corn-manchurian/baby-corn-manchurian.jpg" },
+    { name: "Gobi Manchurian", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/AXEzrUVD_XI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDjQi3nUJLrYEvsF5aHsHy7FSl68Q" },
     { name: "Potato Bites", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/W1ePQ6MWark/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAzrE1A8ut_d9Bdj-sR0zYIWjbaQw" },
     { name: "Crispy Corn", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://rakskitchen.net/wp-content/uploads/2022/01/crisp-corn-500x375.jpg" },
     { name: "Paneer Bites", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://i0.wp.com/mayuris-jikoni.com/wp-content/uploads/2018/04/b6e23-img_6654.jpg?ssl=1" },
@@ -173,7 +173,7 @@ const CategoryPage: React.FC = () => {
                       </p>
                     )}
                   </div>
-                ) : categoryName === "Rotis" || categoryName === "Snacks" || categoryName === "Drinks"|| categoryName === "Hots" ? (
+                ) : categoryName === "Rotis" || categoryName === "Snacks" || categoryName === "Drinks" || categoryName === "Hots" ? (
                   <div className="mt-4">
                     <p className="text-lg text-gray-700"></p>
                   </div>
@@ -215,7 +215,7 @@ const CategoryPage: React.FC = () => {
                 {/* Special Messages for Hots category items */}
                 {categoryName === "Hots" && (
                   <div className="mt-2 text-sm text-gray-500">
-                    {item.name === "Mirchi Bajji" || item.name === "Alu Bajji" || item.name === "Onion Bajji" || item.name === "Vankaya Bajji"|| item.name === "Sabudana vada" ? (
+                    {item.name === "Mirchi Bajji" || item.name === "Alu Bajji" || item.name === "Onion Bajji" || item.name === "Vankaya Bajji" || item.name === "Sabudana vada" ? (
                       <p>Single plate consists of 4 pieces.</p>
                     ) : item.name === "Bread Pakaoda" ? (
                       <p>Single plate has 1 piece.</p>
@@ -224,7 +224,7 @@ const CategoryPage: React.FC = () => {
                 )}
 
                 {/* Wet/Dry Option for Starters */}
-                {categoryName === "Starters" && (
+                {categoryName === "Starters" && !(item.name === "Potato Bites" || item.name === "Crispy Corn" || item.name === "Paneer Bites") && (
                   <div className="mt-4 flex justify-center">
                     <button
                       onClick={() => setSelectedOption("Wet")}
@@ -234,7 +234,7 @@ const CategoryPage: React.FC = () => {
                     </button>
                     <button
                       onClick={() => setSelectedOption("Dry")}
-                      className={`mr-2 px-4 py-2 rounded-md transition-all duration-300 ${selectedOption === "Dry" ? 'bg-orange-600 text-white' : 'bg-gray-200 text-gray-800 hover:bg-orange-500 hover:text-white'}`}
+                      className={`mr-2 px-4 py-2 rounded-md transition-all duration-300 ${selectedOption === "Dry" ? 'bg-orange-600 text-white' : 'bg-gray- 200 text-gray-800 hover:bg-orange-500 hover:text-white'}`}
                     >
                       Dry
                     </button>
