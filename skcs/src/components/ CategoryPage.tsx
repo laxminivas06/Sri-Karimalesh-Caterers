@@ -99,6 +99,7 @@ const CategoryPage: React.FC = () => {
   const items = categoryItems[categoryName as keyof typeof categoryItems] || [];
 
   const [cart, setCart] = useState<{ name: string; price: number; img: string; quantity: number; pack: string; option: string }[]>([]);
+  const [notification, setNotification] = useState(""); // State for notification message
 
   useEffect(() => {
     const savedCart = localStorage.getItem("shoppingCart");
@@ -120,6 +121,10 @@ const CategoryPage: React.FC = () => {
     const updatedCart = [...cart, updatedItem];
     setCart(updatedCart);
     localStorage.setItem("shoppingCart", JSON.stringify(updatedCart));
+
+    // Show notification
+    setNotification(`Added ${item.name} from ${categoryName}!`);
+    setTimeout(() => setNotification(""), 2000); // Clear notification after 2 seconds
   };
 
   return (
@@ -131,6 +136,14 @@ const CategoryPage: React.FC = () => {
       >
         ← Back
       </button>
+
+      {/* Notification Message */}
+      {notification && (
+        <div className="fixed top-16 right-4 bg-green-500 text-white text-sm px-4 py-2 rounded shadow-lg animate-fade">
+          {notification}
+        </div>
+      )}
+
       {items.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {items.map((item, index) => {
@@ -166,36 +179,23 @@ const CategoryPage: React.FC = () => {
                         <span className="ml-2">{size}</span>
                       </label>
                     ))}
-                    {/* Additional message for Paneer Bites and Potato Bites */}
-                    {(item.name === "Paneer Bites" || item.name === "Potato Bites") && (
-                      <p className="text-sm text-gray-500 mt-2">
-                        {selectedSize === "M" ? "M: 5 pieces" : "L: 10 pieces"}
-                      </p>
-                    )}
                   </div>
-                ) : categoryName === "Rotis" || categoryName === "Snacks" || categoryName === "Drinks" || categoryName === "Hots" ? (
+                ) : !(item.name === "Gulab Jamun" || item.name === "Bobbatlu") && (
                   <div className="mt-4">
-                    <p className="text-lg text-gray-700"></p>
+                    {Object.keys(item.prices).map((size) => (
+                      <label key={size} className="inline-flex items-center mr-4">
+                        <input
+                          type="radio"
+                          name={`size-${index}`}
+                          value={size}
+                          checked={selectedSize === size}
+                          onChange={() => setSelectedSize(size)}
+                          className="form-radio h-4 w-4 text-orange-600"
+                        />
+                        <span className="ml-2">{size}</span>
+                      </label>
+                    ))}
                   </div>
-                ) : (
-                  // Render size selection only if the item is not Gulab Jamun or Bobbatlu
-                  !(item.name === "Gulab Jamun" || item.name === "Bobbatlu") && (
-                    <div className="mt-4">
-                      {Object.keys(item.prices).map((size) => (
-                        <label key={size} className="inline-flex items-center mr-4">
-                          <input
-                            type="radio"
-                            name={`size-${index}`}
-                            value={size}
-                            checked={selectedSize === size}
-                            onChange={() => setSelectedSize(size)}
-                            className="form-radio h-4 w-4 text-orange-600"
-                          />
-                          <span className="ml-2">{size}</span>
-                        </label>
-                      ))}
-                    </div>
-                  )
                 )}
 
                 {/* Custom Quantity Input for Gulab Jamun and Bobbatlu */}
@@ -209,35 +209,6 @@ const CategoryPage: React.FC = () => {
                       onChange={(e) => setCustomQuantity(Number(e.target.value))}
                       className="border border-gray-300 rounded-md p-2 w-20 text-center"
                     />
-                  </div>
-                )}
-
-                {/* Special Messages for Hots category items */}
-                {categoryName === "Hots" && (
-                  <div className="mt-2 text-sm text-gray-500">
-                    {item.name === "Mirchi Bajji" || item.name === "Alu Bajji" || item.name === "Onion Bajji" || item.name === "Vankaya Bajji" || item.name === "Sabudana vada" ? (
-                      <p>Single plate consists of 4 pieces.</p>
-                    ) : item.name === "Bread Pakaoda" ? (
-                      <p>Single plate has 1 piece.</p>
-                    ) : null}
-                  </div>
-                )}
-
-                {/* Wet/Dry Option for Starters */}
-                {categoryName === "Starters" && !(item.name === "Potato Bites" || item.name === "Crispy Corn" || item.name === "Paneer Bites") && (
-                  <div className="mt-4 flex justify-center">
-                    <button
-                      onClick={() => setSelectedOption("Wet")}
-                      className={`mr-2 px-4 py-2 rounded-md transition-all duration-300 ${selectedOption === "Wet" ? 'bg-orange-600 text-white' : 'bg-gray-200 text-gray-800 hover:bg-orange-500 hover:text-white'}`}
-                    >
-                      Wet
-                    </button>
-                    <button
-                      onClick={() => setSelectedOption("Dry")}
-                      className={`mr-2 px-4 py-2 rounded-md transition-all duration-300 ${selectedOption === "Dry" ? 'bg-orange-600 text-white' : 'bg-gray- 200 text-gray-800 hover:bg-orange-500 hover:text-white'}`}
-                    >
-                      Dry
-                    </button>
                   </div>
                 )}
 

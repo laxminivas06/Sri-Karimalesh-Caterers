@@ -20,8 +20,9 @@ const Footer = () => {
           <h3 className="text-xl font-bold mb-3">Quick Links</h3>
           <ul className="space-y-2">
             <li><Link to="/" className="hover:text-yellow-500 transition">Home</Link></li> {/* Changed hover color to yellow-500 */}
-            <li><Link to="/mealbox" className="hover:text-yellow-500 transition">Meal Boxes</Link></li>
+            <li><Link to="/mealbox" className="hover:text-yellow-500 transition">Dialy Box</Link></li>
             <li><Link to="/trip-packages" className="hover:text-yellow-500 transition">Trip Packages</Link></li>
+            <li><Link to="/about" className="hover:text-yellow-500 transition">About us</Link></li>
             <li><Link to="/contact" className="hover:text-yellow-500 transition">Contact Us</Link></li>
           </ul>
         </div>

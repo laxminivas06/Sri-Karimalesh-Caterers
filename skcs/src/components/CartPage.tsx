@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Cart: React.FC = () => {
-  const [cart, setCart] = useState<{ name: string; price: number; img: string; quantity: number; pack: string; option: string }[]>([]);
+  const [cart, setCart] = useState<{ name: string; price: number; img: string; quantity: number; pack: string; option: string; source: string }[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Cart: React.FC = () => {
   const handleCheckout = () => {
     const phoneNumber = "+61450056387";
     const orderDetails = cart.map(item => 
-      `Name: ${item.name}, Price: $${item.price.toFixed(2)} AUD, Quantity: ${item.quantity}, Pack: ${item.pack}, Option: ${item.option}`
+      `Name: ${item.name}, Price: $${item.price.toFixed(2)} AUD, Quantity: ${item.quantity}, Pack: ${item.pack}, Option: ${item.option}, Source: ${item.source}`
     ).join('\n');
     
     const message = `I would like to proceed with my order. Here are the details:\n${orderDetails}`;
@@ -43,6 +43,7 @@ const Cart: React.FC = () => {
                 <p className="text-lg text-gray-700">Quantity: {item.quantity}</p>
                 <p className="text-lg text-gray-700">Pack: {item.pack}</p>
                 {item.option !== "N/A" && <p className="text-lg text-gray-700">Option: {item.option}</p>}
+                <p className="text-lg text-gray-700">Source: {item.source}</p> {/* Display source */}
               </div>
               <button
                 onClick={() => removeFromCart(index)}
@@ -62,16 +63,14 @@ const Cart: React.FC = () => {
           onClick={() => navigate(-1)}
           className="bg-gray-600 text-white px-6 py-3 rounded-md hover:bg-gray-700 transition"
         >
-          ← Back
+          Back to Meal Selection
         </button>
-        {cart.length > 0 && (
-          <button
-            onClick={handleCheckout}
-            className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
-          >
-            Proceed to Checkout
-          </button>
-        )}
+        <button
+          onClick={handleCheckout}
+          className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition"
+        >
+          Checkout
+        </button>
       </div>
     </div>
   );

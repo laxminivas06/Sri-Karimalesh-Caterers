@@ -13,7 +13,7 @@ const About = () => {
         className="flex justify-center mb-12"
       >
         <img
-          src="https://res.cloudinary.com/dt3effj06/image/upload/v1741402625/sish_bxlsw0.svg"
+          src="https://res.cloudinary.com/dt3effj06/image/upload/v1741512048/Fonal_gtvvfi.svg"
           alt="Sri Karimalesh Caterings Logo"
           className="w-64 h-64 md:w-80 md:h-80 animate-pulse drop-shadow-lg"
         />

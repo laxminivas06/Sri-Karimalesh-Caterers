@@ -7,8 +7,8 @@ const quotes = [
     english: "Food is the embodiment of the divine",
   },
   {
-    telugu: "అన్నదానం మహాదానం",
-    english: "Offering food is the greatest charity",
+    telugu: "స్వచ్ఛమైన ఆహారం - ఆరోగ్యకరమైన జీవితం!",
+    english: "Pure food leads to a healthy life!",
   },
   {
     telugu: "ఆత్మీయతతో వడ్డించే విందు",
@@ -59,7 +59,7 @@ const Hero = () => {
       <div className="relative z-10 text-center text-white px-6">
         {/* Logo */}
         <img
-          src="https://res.cloudinary.com/dt3effj06/image/upload/v1741402625/sish_bxlsw0.svg"
+          src=" https://res.cloudinary.com/dt3effj06/image/upload/v1741512048/Fonal_gtvvfi.svg"
           alt="Sri Karimalesh Caterings Logo"
           className="w-auto h-400 mx-auto mb-6" // Adjust size as needed
         />

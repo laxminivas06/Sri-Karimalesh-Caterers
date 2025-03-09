@@ -1,149 +1,114 @@
 import React, { useState } from "react";
-import { Plus, Minus } from "lucide-react";
-import WhatsAppButton from "./WhatsAppButton";
 
 const MealBox = () => {
-  const baseMealBoxPrice = 14.99; // Base price for a single meal box
-  const [addOns, setAddOns] = useState({
-    extraFruit: 0,
-    extraSweet: 0,
-    extraCurry: 0,
-    extraRice: 0,
-    extraFriedItem: 0,
-    extraSambar: 0,
-    extraRoti: 0,
-    extraPapad: 0,
-  });
   const [mealBoxCount, setMealBoxCount] = useState(1); // State for number of meal boxes
+  const [selectedBreakfast, setSelectedBreakfast] = useState(null);
+  const [lunchItems, setLunchItems] = useState({}); // To track selected lunch items
+  const [addedBreakfastItems, setAddedBreakfastItems] = useState({}); // Track added breakfast items
+  const [notification, setNotification] = useState(""); // State for notification message
 
-  const addOnList = [
-    {
-      key: "extraFruit",
-      name: "Extra Fruit",
-      description: "🐉 Dragon Fruit, 🥝 Kiwi, 🍉 Watermelon, 🍇 Grapes, 🍏 Green Grapes",
-      price: 3,
-      img: "https://www.californiastrawberries.com/wp-content/uploads/2021/05/Rainbow-Fruit-Salad-1024.jpg"
-    },
-    { key: "extraSweet", name: "Extra Sweet", price: 2, img: "https://www.sriannapurna.in/blog/wp-content/uploads/2023/01/blog-iamges-01.jpg" },
-    { key: "extraCurry", name: "Extra Curry", price: 4, img: "https://images.immediate.co.uk/production/volatile/sites/30/2022/06/Courgette-curry-c295fa0.jpg?resize=768,574" },
-    { key: "extraRice", name: "Extra Rice", price: 2, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2023/07/basmati-rice-recipe.jpg" },
-    { key: "extraFriedItem", name: "Extra Fried Item", price: 3, img: "https://therecipecritic.com/wp-content/uploads/2019/08/vegetable_stir_fry.jpg" },
-    { key: "extraSambar", name: "Extra Sambar", price: 2, img: "https://i0.wp.com/indischwindisch.com/wp-content/uploads/2020/09/img-6174.jpg?resize=1000%2C667&ssl=1" },
-    { key: "extraRoti", name: "Extra Roti", price: 2, img: "https://cdn.mos.cms.futurecdn.net/z9yrzoMFd7hcFnvjzNjv5P-1280-80.jpg" },
-    { key: "extraPapad", name: "Extra Papad", price: 1, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvkrFXWquq_PzjM4djbYQxmg4DtJy-zwnlFA&s" },
+  const breakfastOptions = [
+    { name: "Poha", img: "https://www.funfoodfrolic.com/wp-content/uploads/2024/04/Kanda-Poha-Blog.jpg", price: 5 },
+    { name: "Idli", img: "https://www.ticklingpalates.com/wp-content/uploads/2020/06/Soft-Spongy-Idli-Recipe-500x500.jpg", price: 4 },
+    { name: "Sabudana Khichdi", img: "https://www.sharmispassions.com/wp-content/uploads/2022/02/sabudana-khichdi4.jpg", price: 6 },
+    { name: "Vughani", img: "https://vismaifood.com/storage/app/uploads/public/6d3/020/ca5/thumb__700_0_0_0_auto.jpg", price: 5 },
+    { name: "Pasta", img: "https://www.spicebangla.com/wp-content/uploads/2024/08/Spicy-Pasta-recipe-optimised-scaled.webp", price: 7 },
+    { name: "Fry Maggi", img: "https://i.ytimg.com/vi/SYMsknKmkoQ/maxresdefault.jpg", price: 3 },
   ];
 
-  const handleAddOnChange = (key, operation) => {
-    setAddOns((prev) => ({
-      ...prev,
-      [key]: operation === "add" ? prev[key] + 1 : Math.max(0, prev[key] - 1),
-    }));
-  };
+  const lunchOptions = [
+    { name: "Mint Coriander Rice", img: "https://i0.wp.com/www.tomatoblues.com/wp-content/uploads/2012/02/DSC_0195.jpg?fit=1192%2C1800&ssl=1", price: 6 },
+    { name: "Lemon Rice", img: "https://www.whiskaffair.com/wp-content/uploads/2019/03/Lemon-Rice-2-3.jpg", price: 5 },
+    { name: "Tamarind Rice", img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2018/08/puliyogare-recipe-500x500.jpg", price: 5 },
+    { name: "Tomato Rice", img: "https://priyascurrynation.com/wp-content/uploads/2018/05/tomato_rice_recipe1.jpg", price: 5 },
+    { name: "Pulao", img: "https://easyindiancookbook.com/wp-content/uploads/2022/03/coconut-milk-pulao-instant-pot-5.jpg", price: 7 },
+    { name: "Paneer Rice", img: "https://www.indianveggiedelight.com/wp-content/uploads/2023/09/paneer-fried-rice-featured.jpg", price: 6 },
+    { name: "Mushroom Rice", img: "https://eatsomethingvegan.com/wp-content/uploads/2022/01/Mushroom-Rice-1.jpg", price: 7 },
+    { name: "Curd Rice", img: "https://palatesdesire.com/wp-content/uploads/2022/04/curd-rice-recipe-card@palates-desire.jpg", price: 4 },
+  ];
 
-  const handleMealBoxCountChange = (operation) => {
-    setMealBoxCount((prev) => (operation === "add" ? prev + 1 : Math.max(1, prev - 1)));
-  };
+  const addToCart = (itemName, type) => {
+    const item = type === "breakfast" ? breakfastOptions.find(option => option.name === itemName) : lunchOptions.find(option => option.name === itemName);
+    if (item) {
+      const cartItem = {
+        name: item.name,
+        price: item.price,
+        img: item.img,
+        quantity: 1,
+        pack: type === "breakfast" ? "Single Plate" : "N/A",
+        option: "N/A",
+        source: type // Add source information
+      };
+      const currentCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+      currentCart.push(cartItem);
+      localStorage.setItem("shoppingCart", JSON.stringify(currentCart));
+      
+      if (type === "breakfast") {
+        setAddedBreakfastItems(prev => ({ ...prev, [itemName]: true })); // Track added breakfast items
+        setNotification(`Added ${item.name} from Breakfast!`);
+      } else {
+        setLunchItems(prev => ({ ...prev, [itemName]: true })); // Track lunch items
+        setNotification(`Added ${item.name} from Lunch!`);
+      }
 
-  // Calculate the total cost of customized meal boxes
-  const calculateCustomizedMealBoxPrice = () => {
-    let totalAddOnsCost = 0;
-    addOnList.forEach(({ key, price }) => {
-      totalAddOnsCost += addOns[key] * price;
-    });
-    return (baseMealBoxPrice + totalAddOnsCost) * mealBoxCount;
-  };
-
-  const generateOrderMessage = () => {
-    const selectedAddOns = addOnList
-      .filter(({ key }) => addOns[key] > 0)
-      .map(({ key, name, price }) => `${addOns[key]}x ${name} (+$${addOns[key] * price}AUD)`);
-
-    return `Hi! I'd like to order ${mealBoxCount} Customized Meal Box(es).\n\n` +
-      `Included items:\n- Rice\n- Fry Item\n- Curry\n- Sambar\n- Sweet\n- Roti\n- Papad\n\n` +
-      (selectedAddOns.length > 0 ? `Add-ons:\n${selectedAddOns.map((addon) => `- ${addon}`).join("\n")}\n\n` : "") +
-      `Total: A$${calculateCustomizedMealBoxPrice().toFixed(2)}`;
+      // Clear notification after 2 seconds
+      setTimeout(() => setNotification(""), 2000);
+    } else {
+      console.error("Item not found:", itemName);
+    }
   };
 
   return (
     <section id="mealbox" className="py-20 px-4 bg-orange-50">
       <div className="container mx-auto">
         <h2 className="text-4xl font-bold text-center mb-12 text-orange-900">Daily Meal Box</h2>
-        <div 
-          className="max-w-7xl mx-auto rounded-2xl shadow-xl overflow-hidden p-12 bg-cover bg-center" 
-          style={{ backgroundImage: "url('')" }}
-        >
-          <div className="flex flex-col md:flex-row justify-between items-start gap-14">
-            {/* Standard Meal Section */}
-            <div className="flex-1">
-              <h3 className="text-3xl font-semibold mb-6">Standard Meal Box - ${baseMealBoxPrice}AUD</h3>
-              <ul className="space-y-6">
-                {[
-                  { name: "Rice", img: addOnList[3].img },
-                  { name: "Fry Item", img: addOnList[4].img },
-                  { name: "Curry", img: addOnList[2].img },
-                  { name: "Sambar", img: addOnList[5].img },
-                  { name: "Sweet", img: addOnList[1].img },
-                  { name: "Roti", img: addOnList[6].img },
-                  { name: "Papad", img: addOnList[7].img },
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center text-lg">
-                    <img src={item.img} alt={item.name} className="w-28 h-28 mr-6 rounded-lg" />
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
 
-            {/* Add-ons Section */}
-            <div className="w-full md:w-auto">
-              <div className="bg-orange-100 p-8 rounded-xl">
-                <h4 className="text-2xl font-semibold mb-6">Add-ons</h4>
-                <ul className="space-y-6">
-                  {addOnList.map(({ key, name, price, img }) => (
-                    <li key={key} className="flex items-center justify-between text-lg">
-                      <label className="flex items-center gap-4">
-                        <img src={img} alt={name} className="w-20 h-20 rounded-lg" />
-                        <span>{name} (${price}AUD)</span>
-                      </label>
-                      <div className="flex items-center space-x-3">
-                        <button
-                          className="p-2 bg-red-500 text-white rounded-full"
-                          onClick={() => handleAddOnChange(key, "remove")}
-                        >
-                          <Minus size={16} />
-                        </button>
-                        <span className="w-8 text-center">{addOns[key]}</span>
-                        <button
-                          className="p-2 bg-green-500 text-white rounded-full"
-                          onClick={() => handleAddOnChange(key, "add")}
-                        >
-                          <Plus size={16} />
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+        {/* Notification Message */}
+        {notification && (
+          <div className="fixed top-16 right-4 bg-green-500 text-white text-sm px-4 py-2 rounded shadow-lg animate-fade">
+            {notification}
+          </div>
+        )}
+
+        {/* Breakfast Section */}
+        <div className="max-w-7xl mx-auto rounded-2xl shadow-xl overflow-hidden p-12 bg-yellow-100 mb-12">
+          <h3 className="text-3xl font-semibold text-center mb-6">Breakfast Options</h3>
+          <p className="mb-4 text-center">Available Breakfast Items:</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {breakfastOptions.map((item, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <img src={item.img} alt={item.name} className="w-32 h-32 mb-4 rounded-lg" />
+                <h4 className="text-lg font-semibold">{item.name}</h4>
+                <span className="text-lg font-bold">${item.price}</span>
+                <button
+                  onClick={() => addToCart(item.name, "breakfast")}
+                  className={`mt-2 px-4 py-2 rounded-md ${addedBreakfastItems[item.name] ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+                >
+                  {addedBreakfastItems[item.name] ? "Added" : "Add to Cart"}
+                </button>
               </div>
-            </div>
+            ))}
           </div>
+        </div>
 
-          {/* Total Cost Display */}
-          <div className="text-center mt-8">
-            <h3 className="text-2xl font-semibold text-orange-900">Total: ${calculateCustomizedMealBoxPrice().toFixed(2)}AUD</h3>
-          </div>
-
-          
-           
-
-          {/* WhatsApp Order Button for Standard Meal Box */}
-          <div className="mt-8 text-center">
-            <WhatsAppButton
-              number="+61450056387"
-              message={`Hi! I'd like to order 1 Standard Daily Meal Box.\n\n` +
-                `Included items:\n- Rice\n- Fry Item\n- Curry\n- Sambar\n- Sweet\n- Roti\n- Papad\n\n` +
-                `Total: A$${baseMealBoxPrice.toFixed(2)}`}
-              label="Chat for Standard Meal Box"
-            />
+        {/* Lunch Section */}
+        <div className="max-w-7xl mx-auto rounded-2xl shadow-xl overflow-hidden p-12 bg-green-100">
+          <h3 className="text-3xl font-semibold text-center mb-6">Lunch Options</h3>
+          <p className="mb-4 text-center">Available Lunch Items:</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {lunchOptions.map((item, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <img src={item.img} alt={item.name} className="w-32 h-32 mb-4 rounded-lg" />
+                <h4 className="text-lg font-semibold">{item.name}</h4>
+                <span className="text-lg font-bold">${item.price}</span>
+                <button
+                  onClick={() => addToCart(item.name, "lunch")}
+                  className={`mt-2 p-2 rounded ${lunchItems[item.name] ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+                >
+                  {lunchItems[item.name] ? "Added" : "Add to Cart"}
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
