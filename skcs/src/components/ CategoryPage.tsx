@@ -72,9 +72,9 @@ const categoryItems = {
     { name: "Fruit Salad", prices: { S: 4.99 }, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/fruit-custard.jpg" },
   ],
   Starters: [
-    { name: "Veg Manchurian", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://chefadora.b-cdn.net/Screenshot_2024_10_01_140619_572a1d5d13.jpg" },
-    { name: "Baby Corn Manchurian", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://cdn2.foodviva.com/static-content/food-images/chinese-recipes/baby-corn-manchurian/baby-corn-manchurian.jpg" },
-    { name: "Gobi Manchurian", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/AXEzrUVD_XI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDjQi3nUJLrYEvsF5aHsHy7FSl68Q" },
+    { name: "Veg Manchuria", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://chefadora.b-cdn.net/Screenshot_2024_10_01_140619_572a1d5d13.jpg" },
+    { name: "Baby Corn", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://cdn2.foodviva.com/static-content/food-images/chinese-recipes/baby-corn-manchurian/baby-corn-manchurian.jpg" },
+    { name: "Gobi", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/AXEzrUVD_XI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDjQi3nUJLrYEvsF5aHsHy7FSl68Q" },
     { name: "Potato Bites", prices: {S: 4.99, M: 10.99, L: 13.99 }, img: "https://i.ytimg.com/vi/W1ePQ6MWark/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAzrE1A8ut_d9Bdj-sR0zYIWjbaQw" },
     { name: "Crispy Corn", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://rakskitchen.net/wp-content/uploads/2022/01/crisp-corn-500x375.jpg" },
     { name: "Paneer Bites", prices: { S: 4.99,M: 10.99, L: 13.99 }, img: "https://i0.wp.com/mayuris-jikoni.com/wp-content/uploads/2018/04/b6e23-img_6654.jpg?ssl=1" },
@@ -99,7 +99,7 @@ const CategoryPage: React.FC = () => {
   const items = categoryItems[categoryName as keyof typeof categoryItems] || [];
 
   const [cart, setCart] = useState<{ name: string; price: number; img: string; quantity: number; pack: string; option: string }[]>([]);
-  const [notification, setNotification] = useState(""); // State for notification message
+  const [addedToCart, setAddedToCart] = useState<boolean[]>(Array(items.length).fill(false));
 
   useEffect(() => {
     const savedCart = localStorage.getItem("shoppingCart");
@@ -108,8 +108,8 @@ const CategoryPage: React.FC = () => {
     }
   }, []);
 
-  const addToCart = (item: { name: string; prices: { [key: string]: number }; img: string }, quantity: number, size: string, option: string) => {
-    const price = item.name === "Gulab Jamun" ? quantity * 1 : item.name === "Bobbatlu" ? quantity * 2 : item.prices[size] * quantity; // Calculate total price based on size and quantity
+  const addToCart = (item: { name: string; prices: { [key: string]: number }; img: string }, quantity: number, size: string, option: string, index: number) => {
+    const price = item.name === "Gulab Jamun" ? quantity * 1 : item.name === "Bobbatlu" ? quantity * 2 : item.prices[size] * quantity;
     const updatedItem = {
       name: item.name,
       price,
@@ -121,10 +121,12 @@ const CategoryPage: React.FC = () => {
     const updatedCart = [...cart, updatedItem];
     setCart(updatedCart);
     localStorage.setItem("shoppingCart", JSON.stringify(updatedCart));
-
-    // Show notification
-    setNotification(`Added ${item.name} from ${categoryName}!`);
-    setTimeout(() => setNotification(""), 2000); // Clear notification after 2 seconds
+    
+    setAddedToCart((prev) => {
+      const newAddedToCart = [...prev];
+      newAddedToCart[index] = true;
+      return newAddedToCart;
+    });
   };
 
   return (
@@ -136,20 +138,10 @@ const CategoryPage: React.FC = () => {
       >
         ← Back
       </button>
-
-      {/* Notification Message */}
-      {notification && (
-        <div className="fixed top-16 right-4 bg-green-500 text-white text-sm px-4 py-2 rounded shadow-lg animate-fade">
-          {notification}
-        </div>
-      )}
-
       {items.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {items.map((item, index) => {
-            const [selectedSize, setSelectedSize] = useState(
-              categoryName === "Pickles" ? "250g" : "S"
-            );
+            const [selectedSize, setSelectedSize] = useState(categoryName === "Pickles" ? "250g" : "S");
             const [customQuantity, setCustomQuantity] = useState(1);
             const [selectedOption, setSelectedOption] = useState("N/A");
 
@@ -158,44 +150,38 @@ const CategoryPage: React.FC = () => {
                 <img src={item.img} alt={item.name} className="w-full h-40 object-cover rounded-md mb-4" />
                 <h3 className="text-xl font-semibold text-orange-900">{item.name}</h3>
                 
-                {/* Price Calculation */}
                 <p className="text-lg text-gray-700">
                   Price: ${item.name === "Gulab Jamun" ? (customQuantity * 1).toFixed(2) : item.name === "Bobbatlu" ? (customQuantity * 2).toFixed(2) : item.prices[selectedSize].toFixed(2)} AUD
                 </p>
 
                 {/* Size Selection */}
-                {categoryName === "Starters" ? (
-                  <div className="mt-4">
-                    {["M", "L"].map((size) => (
-                      <label key={size} className="inline-flex items-center mr-4">
-                        <input
-                          type="radio"
-                          name={`size-${index}`}
-                          value={size}
-                          checked={selectedSize === size}
-                          onChange={() => setSelectedSize(size)}
-                          className="form-radio h-4 w-4 text-orange-600"
-                        />
-                        <span className="ml-2">{size}</span>
-                      </label>
-                    ))}
-                  </div>
-                ) : !(item.name === "Gulab Jamun" || item.name === "Bobbatlu") && (
-                  <div className="mt-4">
-                    {Object.keys(item.prices).map((size) => (
-                      <label key={size} className="inline-flex items-center mr-4">
-                        <input
-                          type="radio"
-                          name={`size-${index}`}
-                          value={size}
-                          checked={selectedSize === size}
-                          onChange={() => setSelectedSize(size)}
-                          className="form-radio h-4 w-4 text-orange-600"
-                        />
-                        <span className="ml-2">{size}</span>
-                      </label>
-                    ))}
-                  </div>
+                {categoryName === "Hots" ? (
+                  <p className="text-sm text-gray-500 mt-2">Single plate consists of 4 pieces.</p>
+                ) : (
+                  categoryName === "Starters" && (
+                    <div className="mt-4">
+                      {["M", "L"].map((size) => (
+                        <label key={size} className="inline-flex items-center mr-4">
+                          <input
+                            type="radio"
+                            name={`size-${index}`}
+                            value={size}
+                            checked={selectedSize === size}
+                            onChange={() => setSelectedSize(size)}
+                            className="form-radio h-4 w-4 text-orange-600"
+                          />
+                          <span className="ml-2">{size}</span>
+                        </label>
+                      ))}
+                    </div>
+                  )
+                )}
+
+                {/* Additional message for Paneer Bites and Potato Bites */}
+                {(item.name === "Paneer Bites" || item.name === "Potato Bites") && (
+                  <p className="text-sm text-gray-500 mt-2">
+                    {selectedSize === "M" ? "M: 5 pieces" : "L: 10 pieces"}
+                  </p>
                 )}
 
                 {/* Custom Quantity Input for Gulab Jamun and Bobbatlu */}
@@ -212,12 +198,30 @@ const CategoryPage: React.FC = () => {
                   </div>
                 )}
 
+                {/* Wet/Dry Option for Starters */}
+                {categoryName === "Starters" && !(item.name === "Potato Bites" || item.name === "Crispy Corn" || item.name === "Paneer Bites") && (
+                  <div className="mt-4 flex justify-center">
+                    <button
+                      onClick={() => setSelectedOption("Wet")}
+                      className={`mr-2 px-4 py-2 rounded-md transition-all duration-300 ${selectedOption === "Wet" ? 'bg-orange-600 text-white' : 'bg-gray-200 text-gray-800 hover:bg-orange-500 hover:text-white'}`}
+                    >
+                      Wet
+                    </button>
+                    <button
+                      onClick={() => setSelectedOption("Dry")}
+                      className={`mr-2 px-4 py-2 rounded-md transition-all duration-300 ${selectedOption === "Dry" ? 'bg-orange-600 text-white' : 'bg-gray-200 text-gray-800 hover:bg-orange-500 hover:text-white'}`}
+                    >
+                      Dry
+                    </button>
+                  </div>
+                )}
+
                 {/* Add to Cart Button */}
                 <button
-                  onClick={() => addToCart(item, customQuantity, selectedSize, selectedOption)} // Pass selected option for Starters
-                  className="mt-4 bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition"
+                  onClick={() => addToCart(item, customQuantity, selectedSize, selectedOption, index)}
+                  className={`mt-4 px-4 py-2 rounded-md transition ${addedToCart[index] ? 'bg-green-600' : 'bg-gray-400'} text-white`}
                 >
-                  Add to Cart
+                  {addedToCart[index] ? "Added to Cart" : "Add to Cart"}
                 </button>
               </div>
             );
