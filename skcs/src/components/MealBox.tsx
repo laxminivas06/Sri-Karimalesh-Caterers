@@ -61,7 +61,7 @@ const MealBox = () => {
   return (
     <section id="mealbox" className="py-20 px-4 bg-orange-50">
       <div className="container mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-orange-900">Daily Meal Box</h2>
+        <h2 className="text-4xl font-bold text-center mb-12 text-orange-900">Daily Box</h2>
 
         {/* Notification Message */}
         {notification && (

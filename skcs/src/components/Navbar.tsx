@@ -75,7 +75,7 @@ const Navbar = () => {
                 Menu
               </button>
               <button onClick={() => navigate("/mealbox")} className="block px-3 py-2 rounded-md hover:bg-gray-200 w-full text-left">
-                Meal Box
+                Daily Box
               </button>
               <button onClick={() => navigate("/trip-packages")} className="block px-3 py-2 rounded-md hover:bg-gray-200 w-full text-left">
                 Trip Packages
