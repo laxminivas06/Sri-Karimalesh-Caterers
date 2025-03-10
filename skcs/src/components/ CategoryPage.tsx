@@ -153,29 +153,144 @@ const CategoryPage: React.FC = () => {
                 <p className="text-lg text-gray-700">
                   Price: ${item.name === "Gulab Jamun" ? (customQuantity * 1).toFixed(2) : item.name === "Bobbatlu" ? (customQuantity * 2).toFixed(2) : item.prices[selectedSize].toFixed(2)} AUD
                 </p>
+                {categoryName === "Pickles" && (
+  <div className="mt-4">
+    {["250g", "500g", "1000g", "5000g"].map((size) => (
+      <label key={size} className="inline-flex items-center mr-4">
+        <input
+          type="radio"
+          name={`size-${index}`}
+          value={size}
+          checked={selectedSize === size}
+          onChange={() => setSelectedSize(size)}
+          className="form-radio h-4 w-4 text-orange-600"
+        />
+        <span className="ml-2">{size}</span>
+      </label>
+    ))}
+  </div>
+)}              
+                
+{categoryName === "Sweets" && item.name !== "Gulab Jamun" && item.name !== "Bobbatlu" && (
+  <div className="mt-4">
+    {["S", "M", "L"].map((size) => (
+      <label key={size} className="inline-flex items-center mr-4">
+        <input
+          type="radio"
+          name={`size-${index}`}
+          value={size}
+          checked={selectedSize === size}
+          onChange={() => setSelectedSize(size)}
+          className="form-radio h-4 w-4 text-orange-600"
+        />
+        <span className="ml-2">{size}</span>
+      </label>
+    ))}
+  </div>
+)}
 
-                {/* Size Selection */}
-                {categoryName === "Hots" ? (
-                  <p className="text-sm text-gray-500 mt-2">Single plate consists of 4 pieces.</p>
-                ) : (
-                  categoryName === "Starters" && (
-                    <div className="mt-4">
-                      {["M", "L"].map((size) => (
-                        <label key={size} className="inline-flex items-center mr-4">
-                          <input
-                            type="radio"
-                            name={`size-${index}`}
-                            value={size}
-                            checked={selectedSize === size}
-                            onChange={() => setSelectedSize(size)}
-                            className="form-radio h-4 w-4 text-orange-600"
-                          />
-                          <span className="ml-2">{size}</span>
-                        </label>
-                      ))}
-                    </div>
-                  )
+{categoryName === "Fry Items" && (
+  <div className="mt-4">
+    {["S", "M", "L"].map((size) => (
+      <label key={size} className="inline-flex items-center mr-4">
+        <input
+          type="radio"
+          name={`size-${index}`}
+          value={size}
+          checked={selectedSize === size}
+          onChange={() => setSelectedSize(size)}
+          className="form-radio h-4 w-4 text-orange-600"
+        />
+        <span className="ml-2">{size}</span>
+      </label>
+    ))}
+  </div>
+)}
+
+{categoryName === "Rice Items" && (
+  <div className="mt-4">
+    {["S", "M", "L"].map((size) => (
+      <label key={size} className="inline-flex items-center mr-4">
+        <input
+          type="radio"
+          name={`size-${index}`}
+          value={size}
+          checked={selectedSize === size}
+          onChange={() => setSelectedSize(size)}
+          className="form-radio h-4 w-4 text-orange-600"
+        />
+        <span className="ml-2">{size}</span>
+      </label>
+    ))}
+  </div>
+)}
+
+{categoryName === "Curries" && (
+  <div className="mt-4">
+    {["S", "M", "L"].map((size) => (
+      <label key={size} className="inline-flex items-center mr-4">
+        <input
+          type="radio"
+          name={`size-${index}`}
+          value={size}
+          checked={selectedSize === size}
+          onChange={() => setSelectedSize(size)}
+          className="form-radio h-4 w-4 text-orange-600"
+        />
+        <span className="ml-2">{size}</span>
+      </label>
+    ))}
+  </div>
+)}
+
+{categoryName === "Liquids" && (
+  <div className="mt-4">
+    {["S", "M", "L"].map((size) => (
+      <label key={size} className="inline-flex items-center mr-4">
+        <input
+          type="radio"
+          name={`size-${index}`}
+          value={size}
+          checked={selectedSize === size}
+          onChange={() => setSelectedSize(size)}
+          className="form-radio h-4 w-4 text-orange-600"
+        />
+        <span className="ml-2">{size}</span>
+      </label>
+    ))}
+  </div>
+)}
+
+{categoryName === "Starters" && (
+  <div className="mt-4">
+    {["M", "L"].map((size) => (
+      <label key={size} className="inline-flex items-center mr-4">
+        <input
+          type="radio"
+          name={`size-${index}`}
+          value={size}
+          checked={selectedSize === size}
+          onChange={() => setSelectedSize(size)}
+          className="form-radio h-4 w-4 text-orange-600"
+        />
+        <span className="ml-2">{size}</span>
+      </label>
+    ))}
+  </div>
+)}
+
+              {/* Special Messages for Hots category items */}
+              {categoryName === "Hots" && (
+                  <div className="mt-2 text-sm text-gray-500">
+                    {item.name === "Mirchi Bajji" || item.name === "Alu Bajji" || item.name === "Onion Bajji" || item.name === "Vankaya Bajji" || item.name === "Sabudana vada" ? (
+                      <p>Single plate consists of 4 pieces.</p>
+                    ) : item.name === "Bread Pakaoda" ? (
+                      <p>Single plate has 1 piece.</p>
+                    ) : null}
+                  </div>
                 )}
+                
+                
 
                 {/* Additional message for Paneer Bites and Potato Bites */}
                 {(item.name === "Paneer Bites" || item.name === "Potato Bites") && (
