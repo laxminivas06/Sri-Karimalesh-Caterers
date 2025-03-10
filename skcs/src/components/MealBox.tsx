@@ -11,9 +11,9 @@ const MealBox = () => {
     { name: "Poha", img: "https://www.funfoodfrolic.com/wp-content/uploads/2024/04/Kanda-Poha-Blog.jpg", price: 5 },
     { name: "Idli", img: "https://www.ticklingpalates.com/wp-content/uploads/2020/06/Soft-Spongy-Idli-Recipe-500x500.jpg", price: 4 },
     { name: "Sabudana Khichdi", img: "https://www.sharmispassions.com/wp-content/uploads/2022/02/sabudana-khichdi4.jpg", price: 6 },
-    { name: "Vughani", img: "https://vismaifood.com/storage/app/uploads/public/6d3/020/ca5/thumb__700_0_0_0_auto.jpg", price: 5 },
+    { name: "Godhuma rava Upma", img: "https://www.sharmispassions.com/wp-content/uploads/2013/04/WheatRavaUpma4.jpg", price: 5 },
     { name: "Pasta", img: "https://www.spicebangla.com/wp-content/uploads/2024/08/Spicy-Pasta-recipe-optimised-scaled.webp", price: 7 },
-    { name: "Fry Maggi", img: "https://i.ytimg.com/vi/SYMsknKmkoQ/maxresdefault.jpg", price: 3 },
+    { name: "Tomato Upma", img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/07/tomato-upma-recipe.jpg", price: 3 },
   ];
 
   const lunchOptions = [
