@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"; // Import Link for navigation
 
 const menuCategories = [
   { name: "Sweets", icon: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3g2eGx4cjFwMDJibXUwa29maGkwdXk2cWkyNWUzZ3I3dXh4dDk3dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7WuKx78bJYpeY3p7IM/giphy.gif" },
-  { name: "Fry Items", icon: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTdvdjhpdWF2YTJpczJmcml4ZzQ1NXJqOGN6MDZhZzdhaXZxZWdpZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wc6egY89oHKtmXUiDu/giphy.gif" },
-  { name: "Starters", icon: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjQycmNjZWI1MTFxdnBsa2UwNGI1Ym9lY2R2cjljOGk0ZGkxcXFzcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mbiOAkdZLg3IY/giphy.gif" },
+  { name: "Fry Items", icon: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/07/tomato-upma-recipe.jpg" },
+  { name: "Starters", icon: "https://t3.ftcdn.net/jpg/13/09/84/46/360_F_1309844610_dehWYV6jMBLt7GFPegLW9fHuKvIntZmG.jpg" },
   { name: "Curries", icon: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXZzYXR5MjZyZ2JiaTE3YXVmZXJvM2Jxb3pxeTFmanhyemtleHZsMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT3i0TXPRLa4WQrqik/giphy.gif" },
   { name: "Hots", icon: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWc0eTBhZjFrM293bnA4OWgwNDgzeDR6N3doenQ1dWo4YTh6M2VxMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/r1uMR1y61AwDe2KsWD/giphy.gif" },
   { name: "Rotis", icon: "https://media.giphy.com/media/WeNEOT0yZefx0ae7Rn/giphy.gif?cid=ecf05e47y6evwgqadfpoy1s8sqhtwk9pyvtaluisiyljwdtp&ep=v1_gifs_related&rid=giphy.gif&ct=g" },
