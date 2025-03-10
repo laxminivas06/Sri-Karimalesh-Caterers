@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaUtensils, FaLeaf, FaUserTie, FaClipboardList, FaSmile } from "react-icons/fa"; // Import icons from Font Awesome
+import { FaUtensils, FaLeaf, FaUser , FaClipboardList, FaSmile } from "react-icons/fa"; // Import icons from Font Awesome
 
 const About = () => {
   return (
@@ -40,11 +40,14 @@ const About = () => {
           transition={{ duration: 1, delay: 0.4 }}
           className="flex justify-center"
         >
-          <img
-            src="https://static.vecteezy.com/system/resources/thumbnails/035/802/364/small/ai-generated-a-caucasian-boy-dressed-as-a-chef-and-preparing-food-in-kitchen-photo.JPG"
-            alt="Chef at Sri Karimalesh Caterings"
-            className="rounded-lg shadow-2xl w-full max-w-md border-4 border-orange-300 transform hover:scale-105 transition-transform duration-300"
-          />
+          <div className="relative">
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/035/802/364/small/ai-generated-a-caucasian-boy-dressed-as-a-chef-and-preparing-food-in-kitchen-photo.JPG"
+              alt="Chef at Sri Karimalesh Caterings"
+              className="rounded-lg shadow-2xl w-full max-w-md border-4 border-orange-300 transform hover:scale-105 transition-transform duration-300"
+            />
+            <div className="absolute inset-0 bg-black opacity-20 rounded-lg"></div>
+          </div>
         </motion.div>
 
         {/* Text Content */}
@@ -112,77 +115,26 @@ const About = () => {
         </motion.h3>
         <div className="text-lg text-gray-800 mb-6 leading-relaxed space-y-4">
           <div className="flex items-center">
-            <FaUtensils className="text-orange-600 mr-4 text-2xl" />
+            <FaUtensils className="text-orange-600 mr-4 text-3xl" />
             <strong>Authentic Flavors:</strong> We use traditional recipes passed down through generations.
           </div>
           <div className="flex items-center">
-            <FaLeaf className="text-orange-600 mr-4 text-2xl" />
+            <FaLeaf className="text-orange-600 mr-4 text-3xl" />
             <strong>Fresh Ingredients:</strong> Only the finest and freshest ingredients are used in every dish.
           </div>
           <div className="flex items-center">
-            <FaUserTie className="text-orange-600 mr-4 text-2xl" />
+            <FaUser Tie className="text-orange-600 mr-4 text-3xl" />
             <strong>Experienced Chefs:</strong> Our chefs bring years of expertise and passion to the table.
           </div>
           <div className="flex items-center">
-            <FaClipboardList className="text-orange-600 mr-4 text-2xl" />
+            <FaClipboardList className="text-orange-600 mr-4 text-3xl" />
             <strong>Customized Menus:</strong> Tailored to suit your preferences and event requirements.
           </div>
           <div className="flex items-center">
-            <FaSmile className="text-orange-600 mr-4 text-2xl" />
+            <FaSmile className="text-orange-600 mr-4 text-3xl" />
             <strong>Unmatched Hospitality:</strong> We ensure every guest feels special and well taken care of.
           </div>
         </div>
-      </div>
-
-      {/* Testimonials Section */}
-      <div className="max-w-6xl mx-auto mt-20 text-center bg-gradient-to-br from-white to-orange-50 p-8 rounded-lg shadow-2xl border-t-4 border-orange-600">
-        <motion.h3
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.4 }}
-          className="text-3xl font-bold text-orange-900 mb-6"
-        >
-          What Our Clients Say
-        </motion.h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            {
-              quote: "The food was absolutely delicious! Every bite took me back to my childhood in South India. Highly recommend!",
-              author: "Priya S.",
-            },
-            {
-              quote: "Sri Karimalesh Caterings made our wedding unforgettable. The service was impeccable, and the food was out of this world!",
-              author: "Rahul & Anjali",
-            },
-            {
-              quote: "From the appetizers to the desserts, everything was perfect. Thank you for making our event so special!",
-              author: "Meena K.",
-            },
-            {
-              quote: "The best catering service I've ever experienced. Authentic, flavorful, and delivered with so much love.",
-              author: "Arjun P.",
-            },
-          ].map((testimonial, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-              <p className="text-gray-800 italic mb-4">"{testimonial.quote}"</p>
-              <p className="text-orange-900 font-semibold">- {testimonial.author}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Achievements Section */}
-      <div className="flex flex-wrap justify-center gap-8 mt-20 pb-16 px-6">
-        {[
-          { title: "15+ Years of Experience", icon: "⏳" },
-          { title: "1000+ Happy Customers", icon: "✨" },
-          { title: "Award-Winning Recipes", icon: "🏆" },
-        ].map((item, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
-            <div className="text-4xl mb-4">{item.icon}</div>
-            <p className="text-orange-900 font-semibold">{item.title}</p>
-          </div>
-        ))}
       </div>
     </div>
   );

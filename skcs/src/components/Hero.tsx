@@ -4,14 +4,17 @@ import { Link } from "react-router-dom"; // ✅ Import Link
 const quotes = [
   {
     telugu: "అన్నమే పరబ్రహ్మ స్వరూపం",
+    hindi: "अन्न ही परमब्रह्म का स्वरूप है",
     english: "Food is the embodiment of the divine",
   },
   {
     telugu: "స్వచ్ఛమైన ఆహారం - ఆరోగ్యకరమైన జీవితం!",
+    hindi: "शुद्ध भोजन - स्वस्थ जीवन!",
     english: "Pure food leads to a healthy life!",
   },
   {
     telugu: "ఆత్మీయతతో వడ్డించే విందు",
+    hindi: "प्रेम से परोसा गया भोजन",
     english: "A feast served with love",
   },
 ];
@@ -59,19 +62,22 @@ const Hero = () => {
       <div className="relative z-10 text-center text-white px-6">
         {/* Logo */}
         <img
-          src=" https://res.cloudinary.com/dt3effj06/image/upload/v1741512048/Fonal_gtvvfi.svg"
+          src="https://res.cloudinary.com/dt3effj06/image/upload/v1741512048/Fonal_gtvvfi.svg"
           alt="Sri Karimalesh Caterings Logo"
           className="w-auto h-400 mx-auto mb-6" // Adjust size as needed
         />
 
-       
-
         {/* Quotes */}
         <div className="space-y-3">
-          <p className="text-2xl md:text-3xl font-semibold text-orange-300">
+          <p className="text-2xl md:text-3xl font-semibold text-orange-300 font-serif shadow-lg">
             {quotes[currentQuote].telugu}
           </p>
-          <p className="text-lg md:text-2xl italic">{quotes[currentQuote].english}</p>
+          <p className="text-lg md:text-2xl italic text-yellow-300 font-sans shadow-lg">
+            {quotes[currentQuote].english}
+          </p>
+          <p className="text-2xl md:text-4xl text-orange-300 font-serif shadow-lg">
+            {quotes[currentQuote].hindi}
+          </p>
         </div>
 
         {/* Explore Menu Link */}
